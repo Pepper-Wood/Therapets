@@ -1,0 +1,13 @@
+.moodStyle { background-color: #ff1744; } /* red */
+.nerveStyle { background-color: #ffea00; } /* yellow */
+.mindStyle { background-color: #e040fb; } /* purple */
+.voidStyle {
+  color: #fff;
+  background-color: #2e2e2e;
+} /* black */
+.zealStyle { background-color: #1de9b6; } /* teal */
+.physicalStyle { background-color: #ff9100; } /* orange */
+
+tr td:first-child {
+  font-weight: bold;
+}
