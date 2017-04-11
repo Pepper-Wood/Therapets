@@ -76,67 +76,7 @@
 
   <!-- Page Content -->
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1>Exploring</h1>
-        <p>Therapets love to discover new things and learn about the world around them. They may just find something to bring back home!</p>
-        <p>There are two types of exploration: <b>Indoor</b> and <b>Outdoor</b>. They each yield different items. Some items can be used in crafting, while others can't. Try your luck!</p>
-        <p>You can explore once every <b>Tuesday</b> and <b>Thursday</b>.</p>
-        <hr>
-        <h2>Indoor Exploration</h2>
-        <p>Your Therapet is exploring your home, school, store, or anywhere else that's inside! Hm, how long has it been since you last dusted?</p>
-        <h3>Common Items</h3>
-        <img src="img/fingerPaint.png">Finger Paint
-        <img src="img/glue.png">Glue
-        <img src="img/string.png">String
-        <img src="img/cardboard.png">Cardboard
-        <img src="img/paper.png">Paper
-        <img src="img/fluff.png">Fluff
-        <img src="img/plasticBit.png">Plastic Bits
-        <img src="img/metalWire.png">Metal Wire
-        <img src="img/crayons.png">Crayons
-        <h3>Common Items</h3>
-        <img src="img/paintBucket.png">Paint Bucket
-        <img src="img/fabric.png">Fabric
-        <img src="img/plasticChunk.png">Plastic Chunks
-        <img src="img/electricalWire.png">Electrical Wire
-        <h3>Rare Items</h3>
-        <img src="img/sewingNeedle.png">Sewing Needle
-        <img src="img/glueGun.png">Glue Gun
-        <img src="img/hammer.png">Hammer
-        <img src="img/scissors.png">Scissors
-        <img src="img/batteries.png">Batteries
-        <hr>
-        <h2>Outdoor Exploration</h2>
-        <p>Your Therapet is ready to explore the big, wide world! <i>Outdoor exploration requires you purchase a set of <b>ID Tags</b> from the <a href="magicShop.html">Magic Shop</a></i></p>
-        <h3>Common Items</h3>
-        <img src="img/sticks.png">Sticks
-        <img src="img/string.png">String
-        <img src="img/rocks.png">Rocks
-        <img src="img/plasticBit.png">Plastic Bits
-        <img src="img/glass.png">Glass
-        <img src="img/smallPalmSeed.png">Small Palm Seed
-        <img src="img/fernSeed.png">Fern Seed
-        <img src="img/sunflowerSeed.png">Sunflower Seed
-        <img src="img/lilySeed.png">Lily Seed
-        <img src="img/daisySeed.png">Daisy Seed
-        <h3>Uncommon Items</h3>
-        <img src="img/woodPlank.png">Wood Plank
-        <img src="img/brick.png">Brick
-        <img src="img/plasticChunk.png">Plastic Chunks
-        <img src="img/bonsaiTreeSeed.png">Bonsai Tree Seed
-        <img src="img/tallPalmSeed.png">Tall Palm Seed
-        <img src="img/topiaryBushSeed.png">Topiary Bush Seed
-        <img src="img/cactusSeed.png">Cacus Seed
-        <img src="img/tulipSeed.png">Tulip Seed
-        <img src="img/venusFlytrapSeed.png">Venus Flytrap Seed
-        <img src="img/clay.png">Clay
-        <img src="img/metalSheet.png">Metal Sheet
-        <img src="img/topiaryTreeSeed.png">Topiary Tree Seed
-        <img src="img/orchidSeed.png">Orchid Seed
-        <img src="img/roseSeed.png">Rose Seed
-        <img src="img/nails.png">Nails
-      </div>
+    <div id="exploringOutput" class="row">
     </div>
   </div>
   <!-- /.container -->
@@ -144,5 +84,81 @@
   <!-- JavaScripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  class exploringItem {
+    constructor(aName, aImg, aRank) {
+      this.name = aName;
+      this.img = aImg;
+      this.rank = aRank;
+    }
+  }
+  var indoorItems = new Array();
+  indoorItems.push(new exploringItem("Finger Paint","fingerPaint","common"));
+  indoorItems.push(new exploringItem("Glue","glue","common"));
+  indoorItems.push(new exploringItem("String","string","common"));
+  indoorItems.push(new exploringItem("Cardboard","cardboard","common"));
+  indoorItems.push(new exploringItem("Paper","paper","common"));
+  indoorItems.push(new exploringItem("Fluff","fluff","common"));
+  indoorItems.push(new exploringItem("Plastic Bits","plasticBit","common"));
+  indoorItems.push(new exploringItem("Metal Wire","metalWire","common"));
+  indoorItems.push(new exploringItem("Crayons","crayons","common"));
+  indoorItems.push(new exploringItem("Paint Bucket","paintBucket","uncommon"));
+  indoorItems.push(new exploringItem("Fabric","fabric","uncommon"));
+  indoorItems.push(new exploringItem("Plastic Chunks","plasticChunk","uncommon"));
+  indoorItems.push(new exploringItem("Electrical Wire","electricalWire","uncommon"));
+  indoorItems.push(new exploringItem("Sewing Needle","sewingNeedle","rare"));
+  indoorItems.push(new exploringItem("Glue Gun","glueGun","rare"));
+  indoorItems.push(new exploringItem("Hammer","hammer","rare"));
+  indoorItems.push(new exploringItem("Scissors","scissors","rare"));
+  indoorItems.push(new exploringItem("Batteries","batteries","rare"));
+  
+  var outdoorItems = new Array();
+  outdoorItems.push(new exploringItem("Sticks","sticks","common"));
+  outdoorItems.push(new exploringItem("String","string","common"));
+  outdoorItems.push(new exploringItem("Rocks","rocks","common"));
+  outdoorItems.push(new exploringItem("Plastic Bits","plasticBit","common"));
+  outdoorItems.push(new exploringItem("Glass","glass","common"));
+  outdoorItems.push(new exploringItem("Small Palm Seed","smallPalmSeed","common"));
+  outdoorItems.push(new exploringItem("Fern Seed","fernSeed","common"));
+  outdoorItems.push(new exploringItem("Sunflower Seed","sunflowerSeed","common"));
+  outdoorItems.push(new exploringItem("Lily Seed","lilySeed","common"));
+  outdoorItems.push(new exploringItem("Daisy Seed","daisySeed","common"));
+  outdoorItems.push(new exploringItem("Wood Plank","woodPlank","uncommon"));
+  outdoorItems.push(new exploringItem("Brick","brick","uncommon"));
+  outdoorItems.push(new exploringItem("Plastic Chunk","plasticChunk","uncommon"));
+  outdoorItems.push(new exploringItem("Bonsai Tree Seed","bonsaiTreeSeed","uncommon"));
+  outdoorItems.push(new exploringItem("Tall Palm Seed","tallPalmSeed","uncommon"));
+  outdoorItems.push(new exploringItem("Topiary Bush Seed","topiaryBushSeed","uncommon"));
+  outdoorItems.push(new exploringItem("Cactus Seed","cactusSeed","uncommon"));
+  outdoorItems.push(new exploringItem("Tulip Seed","tulipSeed","uncommon"));
+  outdoorItems.push(new exploringItem("Venus Flytrap Seed","venusFlytrapSeed","uncommon"));
+  outdoorItems.push(new exploringItem("Clay","clay","uncommon"));
+  outdoorItems.push(new exploringItem("Metal Sheet","metalSheet","uncommon"));
+  outdoorItems.push(new exploringItem("Topiary Tree Seed","topiaryTreeSeed","rare"));
+  outdoorItems.push(new exploringItem("Orchid Seed","orchidSeed","rare"));
+  outdoorItems.push(new exploringItem("Rose Seed","roseSeed","rare"));
+  outdoorItems.push(new exploringItem("Nails","nails","rare"));
+  
+  $( document ).ready(function() {
+    var inventoryStr = "<h2>Indoor Exploration</h2><div class='row'>";
+    for (i=0; i<indoorItems.length; i++) {
+      inventoryStr += "<div class='col-sm-6 col-md-4 col-lg-3 mt-4 cardHover'><div class='card ";
+      if (indoorItems[i].rank == "common") { inventoryStr += "commonItem"; }
+      else if (indoorItems[i].rank == "uncommon") { inventoryStr += "uncommonItem"; }
+      else if (indoorItems[i].rank == "rare") { inventoryStr += "rareItem"; }
+      inventoryStr += "'><img class='card-img-top' src='img/" + indoorItems[i].img + ".png'><div class='card-block'><h4 class='card-title'>" + indoorItems[i].name + "</h4></div></div></div>";
+    }
+    inventoryStr += "</div><h2>Outdoor Exploration</h2><p>Your Therapet is ready to explore the big, wide world! <i>Outdoor exploration requires you purchase a set of <b>ID Tags</b> from the <a href='magicShop.html'>Magic Shop</a></i></p><div class='row'>";
+    for (i=0; i<outdoorItems.length; i++) {
+      inventoryStr += "<div class='col-sm-6 col-md-4 col-lg-3 mt-4 cardHover'><div class='card ";
+      if (outdoorItems[i].rank == "common") { inventoryStr += "commonItem"; }
+      else if (outdoorItems[i].rank == "uncommon") { inventoryStr += "uncommonItem"; }
+      else if (outdoorItems[i].rank == "rare") { inventoryStr += "rareItem"; }
+      inventoryStr += "'><img class='card-img-top' src='img/" + outdoorItems[i].img + ".png'><div class='card-block'><h4 class='card-title'>" + outdoorItems[i].name + "</h4></div></div></div>";
+    }
+    inventoryStr += "</div>";
+    $("#exploringOutput").html(inventoryStr);
+  });
+  </script>
 </body>
 </html>
