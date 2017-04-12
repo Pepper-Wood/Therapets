@@ -1,8 +1,12 @@
-/* ================================================================ */
-/* Card Styling */
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 html {
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 14px;
+}
+
+body {
+  background-color: #d4e5f6;
 }
 
 h5 {
@@ -12,6 +16,99 @@ h5 {
   margin: 0;
 }
 
+/* ================================================================ */
+/* Navbar Styling */
+.navbar-brand { padding: 0px; }
+.navbar-brand>img {
+  height: 100%;
+  width: auto;
+}
+
+.dropdown-toggle {
+  font-family: 'Lobster', cursive;
+  font-size: 25px;
+}
+
+.navbar-brand,
+.navbar-nav .dropdown-toggle {
+  line-height: 150px;
+  height: 90px;
+  padding-top: 0;
+}
+
+.navbar-default {
+  background-color: #94bfe9;
+  border-color: #85abd1;
+  font-weight: bold;
+}
+.navbar-default .navbar-brand {
+  color: #2a672e;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ecf3d1;
+}
+.navbar-default .navbar-text {
+  color: #2a672e;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #2a672e;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #4c864f;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #ecf3d1;
+  background-color: #ef6c52;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #ecf3d1;
+  background-color: #ef6c52;
+}
+.navbar-default .navbar-toggle {
+  border-color: #ef6c52;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ef6c52;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #2a672e;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #2a672e;
+}
+.navbar-default .navbar-link {
+  color: #2a672e;
+}
+.navbar-default .navbar-link:hover {
+  color: #ecf3d1;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #2a672e;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ecf3d1;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ecf3d1;
+    background-color: #ef6c52;
+  }
+}
+
+/* ================================================================ */
+/* Card Styling */
 .card {
   font-size: 1em;
   overflow: hidden;
@@ -20,15 +117,29 @@ h5 {
   border-radius: .28571429rem;
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   margin: 5px;
+  
+  border: 1px solid #FFFFFF;
+  border-radius: 25px;
+  color: #fff;
+  box-shadow: 0 3px 0.7px 1px #777777, 0 -7px rgba(0, 0, 0, 0.4) inset;
+  
+  background-image: linear-gradient(right, #111 11%, #333 56%);
+  background-image: -o-linear-gradient(right, #111 11%, #333 56%);
+  background-image: -moz-linear-gradient(right, #111 11%, #333 56%);
+  background-image: -webkit-linear-gradient(right, #111 11%, #333 56%);
+  background-image: -ms-linear-gradient(right, #111 11%, #333 56%);
+  background-image: gradient(right, #111 11%, #333 56%);
 }
 
 .craftingStationCards {
   height: 400px;
 }
 
+/*
 .card:hover {
   box-shadow: 0 1px 3px 0 #337ab7, 0 0 0 1px #d4d4d5;
-}
+} 
+*/
 
 .card-block {
   font-size: 1em;
@@ -46,34 +157,85 @@ h5 {
   object-fit: contain;
 }
 
-.sugarCubeItem > .card-img-top { background-color: #ff0000; }
-.jellyBeanItem > .card-img-top { background-color: #00ff00; }
-.cookieItem > .card-img-top { background-color: #0000ff; }
-.puddinItem > .card-img-top { background-color: #ffff00; }
-.cupcakeItem > .card-img-top { background-color: #ff00ff; }
+.exploration-img-top {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+
+/* red / danger */
+.sugarCubeItem > .card-img-top, .commonItem>.exploration-img-top {
+  background-image: linear-gradient(right, #ef9a9a 11%, #ffcdd2  56%);
+  background-image: -o-linear-gradient(right, #ef9a9a 11%, #ffcdd2  56%);
+  background-image: -moz-linear-gradient(right, #ef9a9a 11%, #ffcdd2  56%);
+  background-image: -webkit-linear-gradient(right, #ef9a9a 11%, #ffcdd2  56%);
+  background-image: -ms-linear-gradient(right, #ef9a9a 11%, #ffcdd2  56%);
+  background-image: gradient(right, #ef9a9a 11%, #ffcdd2  56%);
+}
+
+/* yellow / warning */
+.jellyBeanItem > .card-img-top, .uncommonItem>.exploration-img-top {
+  background-image: linear-gradient(right, #ffe082 11%, #ffecb3  56%);
+  background-image: -o-linear-gradient(right, #ffe082 11%, #ffecb3 56%);
+  background-image: -moz-linear-gradient(right, #ffe082 11%, #ffecb3 56%);
+  background-image: -webkit-linear-gradient(right, #ffe082 11%, #ffecb3 56%);
+  background-image: -ms-linear-gradient(right, #ffe082 11%, #ffecb3 56%);
+  background-image: gradient(right, #ffe082 11%, #ffecb3 56%);
+}
+
+/* green / success */
+.cookieItem > .card-img-top, .rareItem>.exploration-img-top {
+  background-image: linear-gradient(right, #a5d6a7 11%, #c8e6c9 56%);
+  background-image: -o-linear-gradient(right, #a5d6a7 11%, #c8e6c9 56%);
+  background-image: -moz-linear-gradient(right, #a5d6a7 11%, #c8e6c9 56%);
+  background-image: -webkit-linear-gradient(right, #a5d6a7 11%, #c8e6c9 56%);
+  background-image: -ms-linear-gradient(right, #a5d6a7 11%, #c8e6c9 56%);
+  background-image: gradient(right, #a5d6a7 11%, #c8e6c9 56%);
+}
+
+/* teal / info */
+.puddinItem > .card-img-top {
+  background-image: linear-gradient(right, #80cbc4 11%, #b2dfdb 56%);
+  background-image: -o-linear-gradient(right, #80cbc4 11%, #b2dfdb 56%);
+  background-image: -moz-linear-gradient(right, #80cbc4 11%, #b2dfdb 56%);
+  background-image: -webkit-linear-gradient(right, #80cbc4 11%, #b2dfdb 56%);
+  background-image: -ms-linear-gradient(right, #80cbc4 11%, #b2dfdb 56%);
+  background-image: gradient(right, #80cbc4 11%, #b2dfdb 56%);
+}
+
+/* blue / primary */
+.cupcakeItem > .card-img-top {
+  background-image: linear-gradient(right, #81d4fa 11%, #b3e5fc 56%);
+  background-image: -o-linear-gradient(right, #81d4fa 11%, #b3e5fc 56%);
+  background-image: -moz-linear-gradient(right, #81d4fa 11%, #b3e5fc 56%);
+  background-image: -webkit-linear-gradient(right, #81d4fa 11%, #b3e5fc 56%);
+  background-image: -ms-linear-gradient(right, #81d4fa 11%, #b3e5fc 56%);
+  background-image: gradient(right, #81d4fa 11%, #b3e5fc 56%);
+}
 
 .card-title {
   font-size: 1.28571429em;
   font-weight: 700;
   line-height: 1.2857em;
+  text-align: center;
 }
 
 .card-text {
   clear: both;
   margin-top: .5em;
-  color: rgba(0, 0, 0, .68);
+  color: rgba(255, 255, 255, .68);
 }
 
 .card-footer {
-  font-size: 1em;
+  border-top: 1px solid rgba(0,0,0,0.5);
   position: static;
   top: 0;
   left: 0;
   max-width: 100%;
   padding: .75em 1em;
-  color: rgba(0, 0, 0, .4);
-  border-top: 1px solid rgba(0, 0, 0, .05) !important;
-  background: #fff;
+  color: rgba(255, 255, 255, .4);
+  font-size: 12px;
+  text-align: center;
 }
 
 .card-inverse .btn {
@@ -145,7 +307,3 @@ h5 {
 tr td:first-child {
   font-weight: bold;
 }
-
-.commonItem>.card-img-top { background-color:#cd7f32; }
-.uncommonItem>.card-img-top { background-color:#c0c0c0; }
-.rareItem>.card-img-top { background-color:#ffa500; }
