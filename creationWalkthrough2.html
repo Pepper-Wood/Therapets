@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Therapets | Creation Walkthrough</title>
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/spectrum.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div id="navbarOutput"></div>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Creating Your Therapet</h1>
+        
+        <div class="col-md-6 col-sm-6">
+          <div class="row">
+            <div class="col-md-3 col-sm-3">
+              <label for="baseColorPalette">Base Color:</label>
+            </div>
+            <div class="col-md-9 col-sm-9">
+              <input type='text' id="baseColorPalette"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-3">
+              <label for="markingsChoice">Markings:</label>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <select class="form-control" id="markingsChoice">
+                <option value="markings1">Markings 1</option>
+                <option value="markings2">Markings 2</option>
+              </select>
+            </div>
+            <div class="col-md-5 col-sm-5">
+              <input type='text' id="markingColorPalette"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="generatedImg">
+            <img id="topLayer" src="img/generator/topLineart.png">
+            <img id="middleLayer" src="img/generator/markings1_pink.png">
+            <img id="bottomLayer" src="img/generator/colorLayer_red.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+
+  <!-- JavaScripts -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/navbar.js"></script>
+  <script type="text/javascript" src="js/spectrum.js"></script>
+  <script>
+  // -------------------------------------------------------------------------
+  // helper function to change hexString to the string name for color files
+  function getColor(colorStr) {
+    var color = "";
+    if (colorStr == '#bc2e24') { color = "red"; }
+    else if (colorStr == '#ce7320') { color = "orange"; }
+    else if (colorStr == '#d3cd21') { color = "yellow"; }
+    else if (colorStr == '#48b327') { color = "green"; }
+    else if (colorStr == '#2854b3') { color = "blue"; }
+    else if (colorStr == '#6e39c5') { color = "purple"; }
+    else if (colorStr == '#e076b8') { color = "pink"; }
+    return color;
+  }
+  
+  // -------------------------------------------------------------------------
+  // Base Color Palette
+  $("#baseColorPalette").spectrum({
+    showPaletteOnly: true,
+    showPalette:true,
+    hideAfterPaletteSelect:true,
+    color: '#bc2e24',
+    palette: [
+      ['#bc2e24', '#ce7320', '#d3cd21', '#48b327'],
+      ['#2854b3', '#6e39c5', '#e076b8']
+    ],
+    change: function(color) {
+      var color = getColor(color.toHexString());
+      var imgStr = "img/generator/colorLayer_" + color + ".png";
+      $("#bottomLayer").attr('src',imgStr);
+      // change other color palette to adhere to the rules
+      // CASE 1: Pink
+      if (color == 'pink') {
+        $("#markingColorPalette").spectrum("option","palette",[['#bc2e24', '#ce7320', '#d3cd21', '#48b327'],['#2854b3', '#6e39c5', '#e076b8']]);
+      // CASE 2: Red, Yellow, Blue
+      } else if ((color == 'red') || (color == 'yellow') || (color == 'blue')) {
+        $("#markingColorPalette").spectrum("option","palette",['#ce7320', '#48b327', '#6e39c5', '#e076b8']);
+      // CASE 3: Orange, Green, Purple
+      } else if ((color == 'orange') || (color == 'green') || (color == 'purple')) {
+        $("#markingColorPalette").spectrum("option","palette",['#bc2e24', '#d3cd21', '#2854b3', '#e076b8']);
+      }
+    }
+  });
+  
+  // -------------------------------------------------------------------------
+  // Marking Dropdown
+  $("#markingsChoice").change(function(){
+    var color = getColor($("#markingColorPalette").spectrum("get").toHexString());
+    var imgStr = "img/generator/" + $(this).val() + "_" + color + ".png";
+    $("#middleLayer").attr('src',imgStr);
+  });
+  
+  // -------------------------------------------------------------------------
+  // Marking Color Palette
+  $("#markingColorPalette").spectrum({
+    showPaletteOnly: true,
+    showPalette:true,
+    hideAfterPaletteSelect:true,
+    color: '#e076b8',
+    palette: ['#ce7320', '#48b327', '#6e39c5', '#e076b8'],
+    change: function(color) {
+      var color = getColor(color.toHexString());
+      var imgStr = "img/generator/" + $("#markingsChoice").val() + "_" + color + ".png";
+      $("#middleLayer").attr('src',imgStr);
+    }
+  });
+  </script>
+</body>
+</html>

@@ -307,3 +307,20 @@ h5 {
 tr td:first-child {
   font-weight: bold;
 }
+
+.generatedImg {
+  position: relative;
+}
+
+.generatedImg img {
+  width: 100%;
+  position: absolute;
+}
+
+#middleLayer {
+  z-index: -1;
+}
+
+#bottomLayer {
+  z-index: -2;
+}
