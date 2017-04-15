@@ -24,13 +24,17 @@
 
   <!-- Page Content -->
   <div class="container">
-    <h3>Rank Required</h3>
-    <button type='button' class='btn btn-danger'>Sugar Cube</button>
-    <button type='button' class='btn btn-warning'>Jelly Bean</button>
-    <button type='button' class='btn btn-success'>Cookie</button>
-    <button type='button' class='btn btn-info'>Puddin'</button>
-    <button type='button' class='btn btn-primary'>Cupcake</button>
-    <div id="itemInventory" class="row">
+    <div class="row">
+      <h3>Rank Required</h3>
+      <button type='button' class='btn btn-danger'>Sugar Cube</button>
+      <button type='button' class='btn btn-warning'>Jelly Bean</button>
+      <button type='button' class='btn btn-success'>Cookie</button>
+      <button type='button' class='btn btn-info'>Puddin'</button>
+      <button type='button' class='btn btn-primary'>Cupcake</button>
+    </div>
+    <br>
+    <div class="row">
+      <div id="itemInventory"></div>
     </div>
   </div>
   <!-- /.container -->
@@ -85,29 +89,27 @@
   craftingItems.push(new craftingItem("Television","placeholder","cupcake",["6 glass","20 electrical wires","10 plastic chunks","1 metal sheet"],""));
   craftingItems.push(new craftingItem("Small Heater","placeholder","cupcake",["10 plastic chunks","8 metal wires","10 electrical wires"],""));
   
-  $( document ).ready(function() {
-    var inventoryStr = "";
-    for (i=0; i<craftingItems.length; i++) {
-      inventoryStr += "<div class='col-sm-6 col-md-4 col-lg-3 mt-4 cardHover'><div class='card craftingStationCards ";
-      if (craftingItems[i].rank == "sugar cube") { inventoryStr += "sugarCubeItem"; }
-      else if (craftingItems[i].rank == "jelly bean") { inventoryStr += "jellyBeanItem"; }
-      else if (craftingItems[i].rank == "cookie") { inventoryStr += "cookieItem"; }
-      else if (craftingItems[i].rank == "puddin") { inventoryStr += "puddinItem"; }
-      else if (craftingItems[i].rank == "cupcake") { inventoryStr += "cupcakeItem"; }
-      inventoryStr += "'><img class='card-img-top' src='img/" + craftingItems[i].img + ".png'><div class='card-block'><button type='button' class='btn btn-";
-      if (craftingItems[i].rank == "sugar cube") { inventoryStr += "danger"; }
-      else if (craftingItems[i].rank == "jelly bean") { inventoryStr += "warning"; }
-      else if (craftingItems[i].rank == "cookie") { inventoryStr += "success"; }
-      else if (craftingItems[i].rank == "puddin") { inventoryStr += "info"; }
-      else if (craftingItems[i].rank == "cupcake") { inventoryStr += "primary"; }
-      inventoryStr += " btn-sm btn-block card-title'>" + craftingItems[i].name + "</button><div class='card-text'><ul>";
-      for (j=0; j<craftingItems[i].requirements.length; j++) {
-        inventoryStr += "<li>" + craftingItems[i].requirements[j] + "</li>";
-      }
-      inventoryStr += "</ul></div></div><div class='card-footer'>" + craftingItems[i].extra + "</div></div></div>";
+  var inventoryStr = "";
+  for (i=0; i<craftingItems.length; i++) {
+    inventoryStr += "<div class='col-xs-12 col-sm-6 col-md-15' style='height: 400px;'><div class='col-item'><div class='post-img-content ";
+    if (craftingItems[i].rank == "sugar cube") { inventoryStr += "sugarCubeItem"; }
+    else if (craftingItems[i].rank == "jelly bean") { inventoryStr += "jellyBeanItem"; }
+    else if (craftingItems[i].rank == "cookie") { inventoryStr += "cookieItem"; }
+    else if (craftingItems[i].rank == "puddin") { inventoryStr += "puddinItem"; }
+    else if (craftingItems[i].rank == "cupcake") { inventoryStr += "cupcakeItem"; }
+    inventoryStr += "'><img src='";
+    inventoryStr += "img/" + craftingItems[i].img + ".png";
+    inventoryStr += "' class='card-img-top'></div><div class='info'><div class='row'><div class='col-md-12 col-sm-12'><h4>";
+    inventoryStr += craftingItems[i].name;
+    inventoryStr += "</h4><h5 class='price-text-color'><ul>";
+    for (j=0; j<craftingItems[i].requirements.length; j++) {
+      inventoryStr += "<li>" + craftingItems[i].requirements[j] + "</li>";
     }
-    $("#itemInventory").html(inventoryStr);
-  });
+    inventoryStr += "</ul></h5></div></div><div class='separator clear-left'>";
+    inventoryStr += craftingItems[i].extra;
+    inventoryStr += "</div><div class='clearfix'></div></div></div></div>";
+  }
+  $("#itemInventory").html(inventoryStr);
   </script>
 </body>
 </html>

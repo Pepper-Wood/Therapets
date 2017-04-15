@@ -24,6 +24,11 @@
 
   <!-- Page Content -->
   <div class="container">
+    <h1>Exploring</h1>
+    <p>Therapets love to discover new things and learn about the world around them. They may just find something to bring back home!</p>
+    <p>There are two types of exploration: <b>Indoor</b> and <b>Outdoor</b>. They each yield different items. Some items can be used in crafting, while others can't. Try your luck!</p>
+    <p>You can explore once every <b>Tuesday</b> and <b>Thursday</b>.</p>
+    
     <h3>Item Rarity</h3>
     <button type='button' class='btn btn-danger'>Common</button>
     <button type='button' class='btn btn-warning'>Uncommon</button>
@@ -31,6 +36,7 @@
     
     <hr>
     <h2>Indoor Exploration</h2>
+    <p>Your Therapet is exploring your home, school, store, or anywhere else that's inside! Hm, how long has it been since you last dusted?</p>
     <div id="indoorOutput" class="row"></div>
     
     <hr>
@@ -99,34 +105,33 @@
   outdoorItems.push(new exploringItem("Rose Seed","roseSeed","rare"));
   outdoorItems.push(new exploringItem("Nails","nails","rare"));
   
-  $( document ).ready(function() {
-    var inventoryStr = "";
-    for (i=0; i<indoorItems.length; i++) {
-      inventoryStr += "<div class='col-sm-6 col-md-4 col-lg-3 mt-4 cardHover'><div class='card ";
-      if (indoorItems[i].rank == "common") { inventoryStr += "commonItem"; }
-      else if (indoorItems[i].rank == "uncommon") { inventoryStr += "uncommonItem"; }
-      else if (indoorItems[i].rank == "rare") { inventoryStr += "rareItem"; }
-      inventoryStr += "'><img class='exploration-img-top' src='img/" + outdoorItems[i].img + ".png'><div class='card-block' style='text-align:center;'><button type='button' class='btn btn-";
-      if (indoorItems[i].rank == "common") { inventoryStr += "danger"; }
-      else if (indoorItems[i].rank == "uncommon") { inventoryStr += "warning"; }
-      else if (indoorItems[i].rank == "rare") { inventoryStr += "success"; }
-      inventoryStr += "'>" + indoorItems[i].name + "</button></div></div></div>";
-    }
-    $("#indoorOutput").html(inventoryStr);
-    inventoryStr = ""; // reset for outdoorOutput
-    for (i=0; i<outdoorItems.length; i++) {
-      inventoryStr += "<div class='col-sm-6 col-md-4 col-lg-3 mt-4 cardHover'><div class='card ";
-      if (outdoorItems[i].rank == "common") { inventoryStr += "commonItem"; }
-      else if (outdoorItems[i].rank == "uncommon") { inventoryStr += "uncommonItem"; }
-      else if (outdoorItems[i].rank == "rare") { inventoryStr += "rareItem"; }
-      inventoryStr += "'><img class='exploration-img-top' src='img/" + outdoorItems[i].img + ".png'><div class='card-block' style='text-align:center;'><button type='button' class='btn btn-";
-      if (outdoorItems[i].rank == "common") { inventoryStr += "danger"; }
-      else if (outdoorItems[i].rank == "uncommon") { inventoryStr += "warning"; }
-      else if (outdoorItems[i].rank == "rare") { inventoryStr += "success"; }
-      inventoryStr += "'>" + outdoorItems[i].name + "</button></div></div></div>";
-    }
-    $("#outdoorOutput").html(inventoryStr);
-  });
+  var inventoryStr = "";
+  for (i=0; i<indoorItems.length; i++) {
+    inventoryStr += "<div class='col-xs-12 col-sm-6 col-md-15' style='height: 200px;'><div class='col-item'><div class='post-img-content-sm ";
+    if (indoorItems[i].rank == "common") { inventoryStr += "commonItem"; }
+    else if (indoorItems[i].rank == "uncommon") { inventoryStr += "uncommonItem"; }
+    else if (indoorItems[i].rank == "rare") { inventoryStr += "rareItem"; }
+    inventoryStr += "'><img src='";
+    inventoryStr += "img/" + indoorItems[i].img + ".png";
+    inventoryStr += "' class='card-img-top-sm'></div><div class='info'><div class='row'><div class='col-md-12 col-sm-12'><h4>";
+    inventoryStr += indoorItems[i].name;
+    inventoryStr += "</h4></div></div><div class='clearfix'></div></div></div></div>";
+  }
+  $("#indoorOutput").html(inventoryStr);
+
+  var inventoryStr = "";
+  for (i=0; i<outdoorItems.length; i++) {
+    inventoryStr += "<div class='col-xs-12 col-sm-6 col-md-15' style='height: 200px;'><div class='col-item'><div class='post-img-content-sm ";
+    if (outdoorItems[i].rank == "common") { inventoryStr += "commonItem"; }
+    else if (outdoorItems[i].rank == "uncommon") { inventoryStr += "uncommonItem"; }
+    else if (outdoorItems[i].rank == "rare") { inventoryStr += "rareItem"; }
+    inventoryStr += "'><img src='";
+    inventoryStr += "img/" + outdoorItems[i].img + ".png";
+    inventoryStr += "' class='card-img-top-sm'></div><div class='info'><div class='row'><div class='col-md-12 col-sm-12'><h4>";
+    inventoryStr += outdoorItems[i].name;
+    inventoryStr += "</h4></div></div><div class='clearfix'></div></div></div></div>";
+  }
+  $("#outdoorOutput").html(inventoryStr);
   </script>
 </body>
 </html>
